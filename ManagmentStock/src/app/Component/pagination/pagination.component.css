@@ -1,0 +1,69 @@
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+.paginator-currentpage{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.pagination-mat{
+    background: red;
+}
+
+.pagination .pagination-mat div.mat-mdc-form-field-bottom-align::before{
+    display: none;
+}
+.pagination [disabled]{
+    pointer-events: none;
+  }
+.pagination button{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background: red;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+/*editing icon*/
+.pagination .material-icons{
+    line-height: none!important;
+}
+.pagination .mat-icon{
+    height: 100%!important;
+    width: 100%!important;
+}
+
+.pagination .mat-icon.mat-ligature-font[fontIcon]::before {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+}
+/*edit select material*/
+.pagination .mat-mdc-form-field-infix{
+    height: 49px;
+}
+.pagination .mat-mdc-form-field-infix {
+    min-height: 0!important;
+    padding-top: 0!important;
+    padding-bottom:0!important;
+}
+.pagination .mdc-text-field--no-label .mat-mdc-form-field-infix {
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+    height: 40px;
+}
+.pagination mat-select{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

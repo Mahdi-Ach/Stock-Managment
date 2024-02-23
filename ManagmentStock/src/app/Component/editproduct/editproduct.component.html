@@ -1,0 +1,112 @@
+<div class="create-product">
+    <form [formGroup]="productForm" class="product-form">
+        <div>
+            <div class="input_width">
+                <mat-form-field class="example-full-width" >
+                    <mat-label>id</mat-label>
+                    <input matInput formControlName="id">
+                </mat-form-field>
+            </div>
+            <div class="input_width">
+                <mat-form-field class="example-full-width">
+                    <mat-label>productname</mat-label>
+                    <input matInput formControlName="productname">
+                </mat-form-field>
+                <p class="erreur" *ngIf="productForm.controls['productname'].invalid">
+                    <mat-error *ngFor="let productname of productForm.controls['productname'].errors['productname']">
+                        {{productname}}
+                    </mat-error>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="input_width">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput placeholder="Ex. 100 Main St" formControlName="description">
+                    </textarea>
+                </mat-form-field>
+                <p class="erreur" *ngIf="productForm.controls['description']['status'] == 'INVALID'">
+                    <mat-error *ngFor="let description of productForm.controls['description'].errors['description']">
+                        {{description}}
+                    </mat-error>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="input_width">
+                <mat-form-field class="example-full-width">
+                    <mat-label>currency</mat-label>
+                    <input matInput formControlName="currency">
+                </mat-form-field>
+                <p class="erreur" *ngIf="productForm.controls['currency']['status'] == 'INVALID'">
+                    <mat-error *ngFor="let currency of productForm.controls['currency'].errors['currency']">
+                        {{currency}}
+                    </mat-error>
+                </p>
+            </div>
+            <div class="input_width">
+                <mat-form-field class="example-full-width">
+                    <mat-label>quantite</mat-label>
+                    <input matInput type="number" formControlName="quantite">
+                </mat-form-field>
+                <p class="erreur" *ngIf="productForm.controls['quantite']['status'] == 'INVALID'">
+                    <mat-error *ngFor="let quantite of productForm.controls['quantite'].errors['quantite']">
+                        {{quantite}}
+                    </mat-error>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="input_width">
+                <mat-form-field class="example-full-width">
+                    <mat-label>price</mat-label>
+                    <input matInput type="number" formControlName="price">
+                </mat-form-field>
+                <p class="erreur" *ngIf="productForm.controls['price']['status'] == 'INVALID'">
+                    <mat-error *ngFor="let price of productForm.controls['price'].errors['price']">
+                        {{price}}
+                    </mat-error>
+                </p>
+            </div>
+            <div class="input_width">
+                <mat-form-field class="example-full-width">
+                    <mat-label>cost price</mat-label>
+                    <input matInput type="number" formControlName="costprice">
+                </mat-form-field>
+                <p class="erreur" *ngIf="productForm.controls['costprice']['status'] == 'INVALID'">
+                    <mat-error *ngFor="let costprice of productForm.controls['costprice'].errors['costprice']">
+                        {{costprice}}
+                    </mat-error>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="input_width">
+                <mat-form-field class="example-full-width">
+                    <mat-label>stockLevel</mat-label>
+                    <input matInput placeholder="stockLevel" type="number" formControlName="stockLevel">
+                </mat-form-field>
+                <p class="erreur" *ngIf="productForm.controls['stockLevel']['status'] == 'INVALID'">
+                    <mat-error *ngFor="let stockLevel of productForm.controls['stockLevel'].errors['stockLevel']">
+                        {{stockLevel}}
+                    </mat-error>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="input_width">
+                <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+                <input hidden (change)="encodeImageFileAsURL()" #fileInput type="file" id="file">
+                <input type="hidden" formControlName="filename">
+                <p class="erreur" *ngIf="productForm.controls['filename']['status'] == 'INVALID'">
+                    <mat-error *ngFor="let filename of productForm.controls['filename'].errors['filename']">
+                        {{filename}}
+                    </mat-error>
+                </p>
+            </div>
+        </div>
+        <button type="submit" (click)="Edit_Product()" mat-raised-button>Update</button>
+    </form>
+    <img src="" class="img" alt="">
+</div>

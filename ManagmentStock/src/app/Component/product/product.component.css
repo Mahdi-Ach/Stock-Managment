@@ -1,0 +1,14 @@
+.mat-elevation-z8 svg{
+    height: 24px;
+}
+.mat-elevation-z8 svg,.mat-elevation-z8 mat-icon{
+    cursor: pointer;
+}
+.no-data{
+    text-align: center;
+}
+.mat-elevation-z8 > div:first-child{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

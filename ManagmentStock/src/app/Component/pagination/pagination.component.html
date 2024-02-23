@@ -1,0 +1,22 @@
+<div class="pagination">
+  <mat-form-field class="pagination-mat">
+    <mat-select [(value)]="selectedPageSize" (selectionChange)="selectpagesize_event($event)">
+      @for (pagesize of pagesize; track pagesize) {
+        <mat-option [value]="pagesize.value">{{pagesize.viewValue}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <div class="paginator-currentpage">
+    <button mat-mini-fab (click)="leftslide()" [disabled]="pageindex+1<=1?true:false" aria-label="Example mini fab with a heart icon">
+      <mat-icon fontIcon="keyboard_arrow_left"></mat-icon>
+    </button>
+    <!--{{totalpage}}
+    {{pageindex}}-->
+    <span #currentpage>{{pageindex+1}}</span>/
+    <span #totalpage>{{totalpages}}</span>
+    <button mat-mini-fab (click)="rightslide()" [disabled]="pageindex+1>=totalpages?true:false" aria-label="Example mini fab with a heart icon">
+      <mat-icon aria-label="Example home icon" fontIcon="keyboard_arrow_right"></mat-icon>
+    </button>
+  </div>
+  <br>
+</div>
