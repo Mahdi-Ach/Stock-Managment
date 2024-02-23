@@ -38,7 +38,7 @@ public class ProductService implements ProductInt {
         String[] extension = fileName.split("\\.");
         UUID unique = UUID.randomUUID();
         String new_filename = unique+"."+extension[1];
-        String filePath = "C:\\Users\\achba\\Desktop\\PaypalPayment\\Rest-Api-Stock-Managment\\src\\main\\resources\\assets\\" + new_filename;
+        String filePath = "C:\\Users\\achba\\Desktop\\PaypalPayment\\Stock-Managment\\Rest-Api-Stock-Managment\\src\\main\\resources\\assets\\" + new_filename;
         File dest = new File(filePath);
         file.transferTo(dest);
         product.setFilename(new_filename);
