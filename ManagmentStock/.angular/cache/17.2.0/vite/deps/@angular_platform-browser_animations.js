@@ -1,4 +1,8 @@
 import {
+  BrowserModule,
+  DomRendererFactory2
+} from "./chunk-YVBVYGMX.js";
+import {
   AnimationDriver,
   AnimationEngine,
   AnimationRendererFactory,
@@ -7,10 +11,6 @@ import {
   WebAnimationsDriver,
   WebAnimationsStyleNormalizer
 } from "./chunk-YVCQOWL4.js";
-import {
-  BrowserModule,
-  DomRendererFactory2
-} from "./chunk-YVBVYGMX.js";
 import "./chunk-PBOOLPO7.js";
 import "./chunk-ZYIBWEGT.js";
 import {

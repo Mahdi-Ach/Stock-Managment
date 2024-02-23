@@ -32,13 +32,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProductService implements ProductInt {
     private final ProductRepo productRepo;
+    private final String filepath = "C:\\Users\\achba\\Desktop\\Stock-Managment\\Rest-Api-Stock-Managment\\src\\main\\resources\\assets\\";
     @Override
     public Product save(Product product, MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
         String[] extension = fileName.split("\\.");
         UUID unique = UUID.randomUUID();
         String new_filename = unique+"."+extension[1];
-        String filePath = "C:\\Users\\achba\\Desktop\\PaypalPayment\\Stock-Managment\\Rest-Api-Stock-Managment\\src\\main\\resources\\assets\\" + new_filename;
+        String filePath = filepath + new_filename;
         File dest = new File(filePath);
         file.transferTo(dest);
         product.setFilename(new_filename);
@@ -76,8 +77,7 @@ public class ProductService implements ProductInt {
         Optional<Product> product = productRepo.findById(id);
         Product actualproduct = product.get();
         if(file != null && !file.isEmpty()){
-            String filePath = "C:\\Users\\achba\\Desktop\\PaypalPayment\\Rest-Api-Stock-Managment\\src\\main\\resources\\assets\\";
-            String oldfilepath = filePath+actualproduct.getFilename();
+            String oldfilepath = filepath+actualproduct.getFilename();
             File oldfile = new File(oldfilepath);
             if (oldfile.delete()) {
                 System.out.println("Deleted the file: " + oldfile.getName());
@@ -87,7 +87,7 @@ public class ProductService implements ProductInt {
             String fileName = file.getOriginalFilename();
             String extension = fileName.split("\\.")[1];
             String filename = actualproduct.getFilename().split("\\.")[0];
-            String uploadfile = filePath + filename+"."+extension;
+            String uploadfile = filepath + filename+"."+extension;
             System.out.println(uploadfile);
             File dest = new File(uploadfile);
             file.transferTo(dest);
@@ -132,7 +132,8 @@ public class ProductService implements ProductInt {
             productDTO.setQuantite(actual_product.getQuantite());
             productDTO.setFilename(actual_product.getFilename());
             String ext = actual_product.getFilename().split("\\.")[1];
-            String filePath = "C:\\Users\\achba\\Desktop\\PaypalPayment\\Rest-Api-Stock-Managment\\src\\main\\resources\\assets\\"+actual_product.getFilename();
+            String filePath = filepath+actual_product.getFilename();
+            System.out.println(filePath );
             productDTO.setExtensionfile(ext);
             productDTO.setFile(readFileToByteArray(filePath));
             return productDTO;

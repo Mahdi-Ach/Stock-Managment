@@ -1,4 +1,8 @@
 import {
+  MatButton,
+  MatButtonModule
+} from "./chunk-ZQIGWDUX.js";
+import {
   BasePortalOutlet,
   CdkPortalOutlet,
   ComponentPortal,
@@ -17,10 +21,6 @@ import {
   trigger
 } from "./chunk-PBOOLPO7.js";
 import "./chunk-FMK3LGOG.js";
-import {
-  MatButton,
-  MatButtonModule
-} from "./chunk-ZQIGWDUX.js";
 import {
   MatCommonModule
 } from "./chunk-7TIQF7DE.js";
