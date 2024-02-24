@@ -7,6 +7,7 @@ import com.stockmanagement.Exceptions.Exception.NoDataFound;
 import com.stockmanagement.Projections.ProjectIdAndNameAndDesc;
 import com.stockmanagement.Repository.ProductRepo;
 import com.stockmanagement.ServiceImplentation.ProductInt;
+import com.stockmanagement.Utils.DownloadProduct;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -32,6 +33,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProductService implements ProductInt {
     private final ProductRepo productRepo;
+    private final DownloadProduct downloadProduct;
     private final String filepath = "C:\\Users\\achba\\Desktop\\Stock-Managment\\Rest-Api-Stock-Managment\\src\\main\\resources\\assets\\";
     @Override
     public Product save(Product product, MultipartFile file) throws IOException {
@@ -143,5 +145,18 @@ public class ProductService implements ProductInt {
     private static byte[] readFileToByteArray(String filePath) throws IOException {
         Path path = Paths.get(filePath);
         return Files.readAllBytes(path);
+    }
+    @Override
+    public String generateCsv(List<Product> productList){
+        return downloadProduct.generateCsv(productList);
+    }
+
+    @Override
+    public DownloadProduct ProductToExcel() {
+        List<Product> listUsers = getAllProduct();
+
+        DownloadProduct excelExporter = new DownloadProduct(listUsers);
+
+        return excelExporter;
     }
 }

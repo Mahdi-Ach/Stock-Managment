@@ -3,6 +3,7 @@ package com.stockmanagement.Utils;
 import com.stockmanagement.BO.Product;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -14,12 +15,12 @@ import java.util.List;
 
 
 @Component
-public class TableToExcel {
+public class DownloadProduct {
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
     private List<Product> products;
 
-    public TableToExcel(List<Product> products) {
+    public DownloadProduct(List<Product> products) {
         this.products = products;
         workbook = new XSSFWorkbook();
     }

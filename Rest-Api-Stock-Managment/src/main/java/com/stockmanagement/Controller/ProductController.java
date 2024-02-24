@@ -5,7 +5,7 @@ import com.stockmanagement.DTO.ProductDTO;
 import com.stockmanagement.DTO.ProductListResponseDTO;
 import com.stockmanagement.Projections.ProjectIdAndNameAndDesc;
 import com.stockmanagement.ServiceImplentation.ProductInt;
-import com.stockmanagement.Utils.TableToExcel;
+import com.stockmanagement.Utils.DownloadProduct;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +31,7 @@ import java.util.List;
 @CrossOrigin("*")
 public class ProductController {
     private final ProductInt productInt;
-    private final TableToExcel tableToExcel;
+    private final DownloadProduct downloadProduct;
     @PostMapping(value="/product")
     public ResponseEntity<HashMap<String,String>> CreateProduct(@Valid @ModelAttribute Product product,@RequestParam(value = "file") MultipartFile file) throws IOException {
         productInt.save(product,file);
@@ -75,11 +75,7 @@ public class ProductController {
         String headerValue = "attachment; filename=product_" + currentDateTime + ".xlsx";
         response.setHeader(headerKey, headerValue);
 
-        List<Product> listUsers = productInt.getAllProduct();
-
-        TableToExcel excelExporter = new TableToExcel(listUsers);
-
-        excelExporter.export(response);
+        productInt.ProductToExcel().export(response);
     }
 
     @GetMapping("/product/export/csv")
@@ -90,7 +86,7 @@ public class ProductController {
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
         headers.setContentDispositionFormData("attachment", "employees.csv");
 
-        byte[] csvBytes = tableToExcel.generateCsv(employees).getBytes();
+        byte[] csvBytes = productInt.generateCsv(employees).getBytes();
 
         return new ResponseEntity<>(csvBytes, headers, HttpStatus.OK);
     }

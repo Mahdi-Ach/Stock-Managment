@@ -3,8 +3,7 @@ import { FormControl } from '@angular/forms';
 import { TooltipPosition } from '@angular/material/tooltip';
 
 interface PageSize {
-  value: string;
-  viewValue: string;
+  value: string
 }
 @Component({
   selector: 'app-pagination',
@@ -12,7 +11,7 @@ interface PageSize {
   styleUrl: './pagination.component.css',
   encapsulation: ViewEncapsulation.None,
 })
-export class PaginationComponent{
+export class PaginationComponent implements OnInit{
  
   @Input() pageindex!:number;
   @Input() length!:number;
@@ -21,11 +20,15 @@ export class PaginationComponent{
   @Output() pageChanged = new EventEmitter<{}>();
   @Output() sizeChanged = new EventEmitter<{}>();
   pagesize: PageSize[] = [
-    {value: '5', viewValue: '5'},
-    {value: '10', viewValue: '10'},
-    {value: '20', viewValue: '20'},
+    {value: '5'},
+    {value: '10'},
+    {value: '20'},
   ];
-
+  ngOnInit(): void {
+    if(this.length == 0){
+      this.pageindex = -1
+    }
+  }
   selectedPageSize:any = this.pagesize[0].value;
 
   selectpagesize_event(e:any){

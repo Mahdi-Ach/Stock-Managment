@@ -1,4 +1,3 @@
-
 <div class="mat-elevation-z8">
   <div>
     <button mat-raised-button (click)="deleteproductsservice(selected_item_id)">Supprimer</button>
@@ -54,3 +53,16 @@
     </tr>
   </table>
   <app-pagination (pageChanged)="fetch_product_page($event)" (sizeChanged)="fetch_product_page($event)" [pageindex]="pageIndex" [length]="length" [totalpages]="totalpages"></app-pagination>
+    <div>
+      <mat-form-field>
+        <mat-label>Waus to Dowanlod product file</mat-label>
+        <mat-select [value]="selected_way" (selectionChange)="selectdownloadingway($event)" name="download">
+          @for (download of downloadfile; track download) {
+            <mat-option [value]="download" def>{{download}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <a [href]="'http://localhost:8080/v1/product/export/' + selected_way" mat-raised-button>Download {{selected_way}}</a>
+      
+    </div>
+</div>

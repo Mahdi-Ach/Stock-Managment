@@ -2,9 +2,9 @@
   <mat-form-field class="pagination-mat">
     <mat-select [(value)]="selectedPageSize" (selectionChange)="selectpagesize_event($event)">
       @for (pagesize of pagesize; track pagesize) {
-        <mat-option [value]="pagesize.value">{{pagesize.viewValue}}</mat-option>
+        <mat-option [value]="pagesize.value">{{pagesize.value}}</mat-option>
       }
-    </mat-select>
+    </mat-select> 
   </mat-form-field>
   <div class="paginator-currentpage">
     <button mat-mini-fab (click)="leftslide()" [disabled]="pageindex+1<=1?true:false" aria-label="Example mini fab with a heart icon">

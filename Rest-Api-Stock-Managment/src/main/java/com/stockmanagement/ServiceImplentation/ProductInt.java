@@ -4,6 +4,7 @@ import com.stockmanagement.BO.Product;
 import com.stockmanagement.DTO.ProductDTO;
 import com.stockmanagement.DTO.ProductListResponseDTO;
 import com.stockmanagement.Projections.ProjectIdAndNameAndDesc;
+import com.stockmanagement.Utils.DownloadProduct;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,4 +18,6 @@ public interface ProductInt {
     void UpdateProductFields(Product productupdate,MultipartFile file,Long id) throws IOException;
     List<Product> getAllProduct();
     ProductDTO getProductById(Long id) throws IOException;
+    String generateCsv(List<Product> products);
+    DownloadProduct ProductToExcel();
 }

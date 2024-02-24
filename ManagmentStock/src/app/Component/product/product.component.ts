@@ -50,7 +50,11 @@ export class ProductComponent implements AfterViewInit{
   selected_item_id:any[] = []
   no_datafound:boolean = false
   text_search:string="";
-
+  downloadfile: string[] = [
+    "csv",
+    "excel",
+  ]
+  selected_way:string = this.downloadfile[0]
   ngAfterViewInit(): void {
     this.fetch_product_page()
     this.dataSource.sort = this.sort;
@@ -61,7 +65,6 @@ export class ProductComponent implements AfterViewInit{
     this.fetch_product_page()
   }
   applyFilter(event: any) {
-    //this.filtervalue = (event.target as HTMLInputElement).value;
     this.text_search = event.target.value
     this.fetch_product_page()
   }
@@ -88,6 +91,7 @@ export class ProductComponent implements AfterViewInit{
         console.log(value)
         this.dataSource.data = value.content;
         this.length = value.totalelements
+       
         this.totalpages = value.totalpage
         this.showpagination=true
         console.log(this.isAllSelected(),this.totalpages == this.pageIndex,this.pageIndex)
@@ -156,5 +160,10 @@ export class ProductComponent implements AfterViewInit{
 
   edit(id:any){
     this.route.navigate(['/edit-product/'+id]);
+  }
+
+  selectdownloadingway(e:any){
+    console.log(e)
+    this.selected_way = e.value
   }
 }
