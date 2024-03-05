@@ -1,0 +1,13 @@
+#form-product{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#form-product button{
+    width: fit-content;
+}
+#form-product p{
+    color: red;
+    margin: 0;
+}
